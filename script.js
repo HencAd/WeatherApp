@@ -5,7 +5,7 @@ const app= {
 
 
 function searchCity (searchTerm) {
-    fetch (`${app.base}weather?q=${searchTerm}&units=metric&APPID=${app.key}`)
+    fetch (`${app.base}weather?q=${searchTerm}&units=metric&APPID=${app.key}&lang=pl`)
     .then(result => { return result.json()})
     .then(result => { init(result)})
 }
@@ -47,7 +47,7 @@ function init (resultFromServer) {
   temp.innerHTML=`${Math.round(resultFromServer.main.temp)}<span>°C</span>`
 
   let weatherHeader = document.querySelector('.weatherHeader');
-  weatherHeader.innerHTML=resultFromServer.weather[0].main;
+  weatherHeader.innerHTML=resultFromServer.weather[0].description;
 
   let weatherIcon = document.getElementById('iconW');
 
